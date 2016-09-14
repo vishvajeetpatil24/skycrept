@@ -13,4 +13,3 @@ Reference List of Articles
 - https://en.wikipedia.org/wiki/Semantic_security
 - https://en.wikipedia.org/wiki/Key_(cryptography)
 - https://en.wikipedia.org/wiki/Digital_signature
-- 
