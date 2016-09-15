@@ -13,3 +13,11 @@ Reference List of Articles
 - https://en.wikipedia.org/wiki/Semantic_security
 - https://en.wikipedia.org/wiki/Key_(cryptography)
 - https://en.wikipedia.org/wiki/Digital_signature
+- https://en.wikipedia.org/wiki/Stream_cipher
+- https://en.wikipedia.org/wiki/Block_cipher
+- https://en.wikipedia.org/wiki/Public_key_infrastructure        (Optional)
+- https://en.wikipedia.org/wiki/Web_of_trust                     (Optional)
+- https://www.khanacademy.org/computing/computer-science/cryptography#modern-crypt   (MUST)
+- https://www.khanacademy.org/computing/computer-science/cryptography#modarithmetic  (MUST)
+- https://www.khanacademy.org/computing/computer-science/cryptography#comp-number-theory   (MUST)
+- https://www.khanacademy.org/computing/computer-science/cryptography#random-algorithms-probability  (MUST)
