@@ -1,5 +1,5 @@
 # skycrept
-SSL and TLS proof of concept as vulnerability checker Software
+SSL and TLS proof of concept of known vulnerbilities as vulnerability checker Software
 
 Shannon's maxim --> "the enemy knows the system"
  
