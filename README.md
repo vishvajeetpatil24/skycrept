@@ -22,7 +22,8 @@ Reference List of Articles
 - https://www.khanacademy.org/computing/computer-science/cryptography#comp-number-theory   (MUST)
 - https://www.khanacademy.org/computing/computer-science/cryptography#random-algorithms-probability  (MUST)
 - https://tools.ietf.org/pdf/rfc6101.pdf                         (SSL Protocol Standard. This is big document Optional)
-----------------------------------------------------------------------------------------------------------------
+
+---------------------------------------------------------------------------------------------------------------
 IMP Algorithms to read
 https://en.wikipedia.org/wiki/Data_Encryption_Standard     (DES)
 https://en.wikipedia.org/wiki/RSA_(cryptosystem)           (RSA)
