@@ -21,3 +21,4 @@ Reference List of Articles
 - https://www.khanacademy.org/computing/computer-science/cryptography#modarithmetic  (MUST)
 - https://www.khanacademy.org/computing/computer-science/cryptography#comp-number-theory   (MUST)
 - https://www.khanacademy.org/computing/computer-science/cryptography#random-algorithms-probability  (MUST)
+- https://tools.ietf.org/pdf/rfc6101.pdf                         (SSL Protocol Standard. This is big document Optional)
