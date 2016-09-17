@@ -7,7 +7,7 @@
  *****Rabin miller Primality Test
 ************************************/
 
-//Program code is given Below ---- LKID problem Medium SPOJ
+//Program code is given Below ---- 
 
 #include <bits/stdc++.h>
 using namespace std;
