@@ -1,32 +1,33 @@
 1) Generate Prime Numbers --- Use sieve of erastothenes --- Loop upto squareroot
 
-2) Find the number of divisors --- The total number of divisors of a particular number (includes number itself and "1" also) is given by
-	
-    Suppose number n is written as n = a1^p*a2^q*a3^r*a4^s ..... where a1,a2,a3,a4 are distinct prime numbers
-    then No of divisors is given by 
-    
-                                    NoOfDivisors = (p-1)*(q-1)*(r-1)*(s-1).....
-                                    
-    Here prime numbers are generated (using sieve) upto square root of given number upto.....
+2) Find the number of divisors --- The total number of divisors of a particular number (includes number itself and "1" also) is
+given by
+        Suppose number n is written as n = a1^p*a2^q*a3^r*a4^s ..... where a1,a2,a3,a4 are distinct prime numbers
+        then No of divisors is given by 
+                
+                NoOfDivisors = (p-1)*(q-1)*(r-1)*(s-1).....
+        
+        NOTE: Here prime numbers are generated (using sieve) upto square root of given number upto.....
 
 3) Find the Sum of Divisors  ---- The sum of divisors of a particular number ----
-
-	Suppose number n is written as n = a1^p*a2^q*a3^r*a4^s ..... where a1,a2,a3,a4 are distinct prime numbers
-    then Sum of divisors is given by
+        Suppose number n is written as n = a1^p*a2^q*a3^r*a4^s ..... where a1,a2,a3,a4 are distinct prime numbers
+        then Sum of divisors is given by
     
-    								SumOfDivisors = (Sum(0,p,i){a1^i}+Sum(0,q,i){a2^i}+Sum(0,r,i){a3^i}+Sum(0,s,i){a4^i}+......)
+    	        SumOfDivisors = (Sum(0,p,i){a1^i}*Sum(0,q,i){a2^i}*Sum(0,r,i){a3^i}*Sum(0,s,i){a4^i}*......)
                                     
-   	Example of Implementation using bottom Up DP ---- http://www.spoj.com/problems/AFS/
-    
+   	NOTE: Example of Implementation using bottom Up DP ---- http://www.spoj.com/problems/AFS/ . Here Sum(0,p,i) denotes sum
+   	from 0 to p over variable i.
+   	
 4) Euler Totient Function  ---- The ETF function can be calculated (using it's beautiful property of multiplicativity) as
 	
    	Suppose number n is written as n = a1^p*a2^q*a3^r*a4^s ..... where a1,a2,a3,a4 are distinct prime numbers
-    then Euler Totient Function is given by
+        then Euler Totient Function is given by
     
-    								ETF = ((pow(a1,p-1)*(a1-1))*(pow(a2,q-1)*(a2-1))*(pow(a3,r-1)*(a3-1))......)
+    	        ETF = ((pow(a1,p-1)*(a1-1))*(pow(a2,q-1)*(a2-1))*(pow(a3,r-1)*(a3-1))......)
                                     
 5) LCMSUM OEIS Formula which uses Phi i.e ETF function .......
 
-	 							a(n) = n*(1+Sum_{d|n} d*phi(d))/2 .... Where a(n) is partial sum
+	 	a(n) = n*(1+Sum_{d|n} d*phi(d))/2 .... Where a(n) is partial sum
                                 
-  	It's proof is given on http://math.stackexchange.com/questions/761670/how-to-find-this-lcm-sum-function-textlcm1-n-textlcm2-n-cdots-t
+        NOTE:It's proof is given on 
+             http://math.stackexchange.com/questions/761670/how-to-find-this-lcm-sum-function-textlcm1-n-textlcm2-n-cdots-t
