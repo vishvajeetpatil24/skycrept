@@ -29,6 +29,7 @@ IMP Algorithms to read
 - https://en.wikipedia.org/wiki/Data_Encryption_Standard     (DES)
 - https://en.wikipedia.org/wiki/RSA_(cryptosystem)           (RSA)
 - https://en.wikipedia.org/wiki/Digital_Signature_Algorithm  (DSS)
-- https://en.wikipedia.org/wiki/RC4                          (RC4)
+- https://en.wikipedia.org/wiki/RC4                          (RC4) (MUST FOR POODLE)
 - https://en.wikipedia.org/wiki/SHA-1                        (SHA)
 - https://en.wikipedia.org/wiki/MD5                          (MD5)
+- https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_Block_Chaining (CBC) (MUST FOR POODLE)
