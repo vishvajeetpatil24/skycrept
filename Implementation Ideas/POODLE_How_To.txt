@@ -1,0 +1,10 @@
+One of the possible ways to implement POODLE.
+
+Thanks to "Kim Bjørn Tiedemann" a person who posted comment on troyhunt.com
+Link = https://www.troyhunt.com/everything-you-need-to-know-about/
+
+The idea is --------------------------------------
+"In the context of web browser, if I have a man-in-the-middle position on the victim’s network and the secret I’m trying to steal is inside an HTTPS-only cookie, it’s easy for me to force the client to keeping resending the same message until this attack succeeds. All I have to do is wait for the victim to visit any plain-HTTP site, and insert an invisible iframe into it which runs some Javascript. The Javascript will keep making requests to site whose cookie I’m trying to steal, and I’ll keep tampering with each request as it occurs. Each failed attempt will result in the connection dropping and then being renegotiated with new key material, so each attempt has an independent 1-in-256 chance of succeeding. Once I’ve successfully determined one byte of the secret cookie, I then increase the length of the URL being requested by one, so that the next unknown byte is now positioned at the end of a block. I also the length of something after the cookie, such as the POST body, so that there is still a full block of padding at the end. I repeat my attack in this fashion until I’ve decrypted the entire cookie.
+
+Off course you need to be in-the-middle but 1-256 chance for decrypting each byte in a auth-cookie is not that hard and we should be disabliing SSLv3 on our servers. Let the IE6 guys learn it the hard way :-)"
+
