@@ -14,6 +14,6 @@ secret cookie, I then increase the length of the URL being requested by one, so 
 the end of a block. I also the length of something after the cookie, such as the POST body, so that there is still a full block
 of padding at the end. I repeat my attack in this fashion until I’ve decrypted the entire cookie.
 
-Off course you need to be in-the-middle but 1-256 chance for decrypting each byte in a auth-cookie is not that hard and we should
+Of course you need to be in-the-middle but 1-256 chance for decrypting each byte in a auth-cookie is not that hard and we should
 be disabliing SSLv3 on our servers. Let the IE6 guys learn it the hard way :-)"
 
