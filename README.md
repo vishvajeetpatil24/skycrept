@@ -34,3 +34,8 @@ IMP Algorithms to read
 - https://en.wikipedia.org/wiki/MD5                          (MD5)
 - https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_Block_Chaining (CBC) (MUST FOR POODLE)
 - https://en.wikipedia.org/wiki/Padding_oracle_attack#Example_of_the_attack_on_CBC_encryption (Padding Oracle way to implement after downgrade)
+- https://en.wikipedia.org/wiki/Oracle_machine
+- https://en.wikipedia.org/wiki/Substitution-permutation_network
+- https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
+- https://en.wikipedia.org/wiki/Product_cipher
+- https://en.wikipedia.org/wiki/Confusion_and_diffusion
