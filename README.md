@@ -33,3 +33,4 @@ IMP Algorithms to read
 - https://en.wikipedia.org/wiki/SHA-1                        (SHA)
 - https://en.wikipedia.org/wiki/MD5                          (MD5)
 - https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher_Block_Chaining (CBC) (MUST FOR POODLE)
+- https://en.wikipedia.org/wiki/Padding_oracle_attack#Example_of_the_attack_on_CBC_encryption (Padding Oracle way to implement after downgrade)
