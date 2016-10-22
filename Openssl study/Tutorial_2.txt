@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 OpenSSL Tutorial 2:
 Task: 		Create the root CA certificate and use it to sign certificate for other applications. Guideline is given on below pages.
 Links:		https://web.archive.org/web/20150307000706/http://www.eclectica.ca/howto/ssl-cert-howto.php/
 			http://www.flatmtn.com/article/setting-openssl-create-certificates
 			http://www.flatmtn.com/article/setting-ssl-certificates-apache
+=======
+OpenSSL Tutorial 2:
+Task: 		Create the root CA certificate and use it to sign certificate for other applications. Guideline is given on below pages.
+Links:		https://web.archive.org/web/20150307000706/http://www.eclectica.ca/howto/ssl-cert-howto.php/
+		http://www.flatmtn.com/article/setting-openssl-create-certificates
+		http://www.flatmtn.com/article/setting-ssl-certificates-apache
+>>>>>>> 4e58e65fc9f9fc8f20d9bf8eb4a9049d82b6cca7
