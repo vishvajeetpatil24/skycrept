@@ -1,4 +1,3 @@
-import sys
 
 # Table of girls ages with person ages with whom they are allowded to date with
 

@@ -1,4 +1,4 @@
-import sys
+
 # Strings
 
 katrina = "Nude Pics"

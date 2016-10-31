@@ -1,4 +1,4 @@
-import sys
+
 #Playing with variable and function scope in python
 
 #Before assignment of variable printing it. (Will not work as this is interpreted language)
@@ -32,3 +32,16 @@ def func1():
 	l = 25
 	return func2()
 func1()
+
+#Use of global keyword.When variable is accessed inside a function for assignment then the variable is treated as local unless preceded
+#by global <var> line
+def func3():
+	l = 19
+	print(l)
+func3()
+def func4():
+	#Assignment inside a function to a variable makes it treated as if being a local variable so the l on R.H.S is thought of as local variable
+	#and since it does not have any value associated with it the below line will give a error
+	#l = l +1
+	print(l)	
+func4()
