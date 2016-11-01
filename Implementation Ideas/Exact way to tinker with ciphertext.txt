@@ -1,0 +1,2 @@
+This note refers to Padding Oracle Attack
+Reference : https://en.wikipedia.org/wiki/Padding_oracle_attack
