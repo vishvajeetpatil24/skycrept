@@ -71,9 +71,9 @@ except Exception as e:
 
 #User Defined Exception
 class neterror(RuntimeError):
-	def __init__(self,arg):
+	def __init__(self,*arg):
 		self.args = arg
 try:
-	raise neterror("Bad Domain Name")
+	raise neterror("Bad Domain Name","Bad Server")
 except neterror as e:
 	print(e.args)
