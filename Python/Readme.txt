@@ -30,3 +30,5 @@ oop.py    --- Describes the OOP concepts of python language
 scope.py    --- Describe the scope rules in python language
 exceptions.py    --- Describes how to write the exceptions in python language for error handling
 fileio.py    --- Describes file input and output in python
+
+Note for exceptions.py file -- Manually delete file.txt after running this script as file does not gets deleted through script due to setting of wrong permissions on file(done deliberately to raise exception) so that next time program will behave in similar fashion
