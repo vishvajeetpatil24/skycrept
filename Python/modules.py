@@ -13,7 +13,7 @@ print(dir(os))
 print(os.__name__)
 class test:
 	x = 5
-	def func():
+	def func(self):
 		print("Hello world")
 print(dir(test))
 print("##############################################################################\n")

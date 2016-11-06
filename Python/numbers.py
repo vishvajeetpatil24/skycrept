@@ -10,6 +10,8 @@ print(math.log10(5))
 print(math.log(math.e))
 print(math.sqrt(25))
 print(round(3.5149,2))
+print(round(3.5149,1))
+print(math.pi)
 #2 -- Trignometric Functions
 print(math.asin(0)/math.pi*180)
 print(math.acos(0)/math.pi*180)
@@ -22,5 +24,5 @@ names = ["Vishvajeet","Piyush","Anuraag","Apurva"]
 print(random.choice(names))
 random.seed(random.randrange(0,100000000000000000))
 print(random.random())
-print(random.shuffle(names))
+print(random.shuffle(names)) #does not return anything hence 'None' is printed
 print(names)

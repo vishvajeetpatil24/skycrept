@@ -7,7 +7,7 @@ def func(*args):
 	print(kat[1:])
 func("Batwoman","Movie","Was great")
 #Unpacking
-#Pointer concpt check - No starred argument is totally different thing
+#Pointer concept check - No starred argument is totally different thing
 *kat,c,d = 1,2,3
 total = 0
 for x in kat:

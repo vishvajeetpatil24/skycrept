@@ -1,7 +1,6 @@
 #Example of capturing specific exception
 #Still room for improvement in this file
 import os
-import sys
 import stat
 try:
 	fob = open("file.txt","r+")
