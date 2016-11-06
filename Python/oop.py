@@ -91,6 +91,7 @@ achondrite.changer()
 skylake = derivedclass()
 print(achondrite<skylake) #__cmp__ is no longer used for operator overloading.Now a days __lt__ and __eq__ is used.
 print(str(skylake))
+print(skylake)
 
 print("\n##############################################################################\n")
 #Private variable access
