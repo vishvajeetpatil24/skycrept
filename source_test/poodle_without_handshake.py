@@ -21,18 +21,23 @@ def pad(s):
 	'''This function returns the padded message for given parameter string s according to PKCS7 standard
 		which is used with AES ciphers'''
 	n = AES.block_size
-	return s + ((n - len(s) % n) * chr(n - len(s) % n)).encode('UTF-8')
+	return s + ((n - len(s) % n) * bytes([(n - len(s) % n)]))
 
 #Function to unpad messages
 def unpad(s):
-	'''This function returns the unpadded version of given parameter string s according to PKCS7 standard
-		which is used with AES ciphers'''
-	return  s[:-ord(s[len(s)-1:])]  #This implies remove the last padding character as many times as it's value from given string to get the
+	'''This function returns the true and unpadded version of given parameter string s according to PKCS7 standard
+		which is used with AES ciphers if the padding is correct otherwise it returns false and string as it is'''
+	if (s[len(s)-1]>AES.block_size):
+		return False,s
+	for ch in s[-1*s[len(s)-1]:]:
+		if ch!=s[len(s)-1]:
+			return False,s
+	return  True,s[:-s[len(s)-1]]  #This implies remove the last padding character as many times as it's value from given string to get the
 									#unpadded string
 
 def encrypt(message):
 	'''This function returns the encrypted version of the passed message using AES-256 in CBC(Cipher Block Chaining Mode'''
-	data = message.encode('UTF-8') #Encoding the message is must 
+	data = bytes(message) #Encoding the message is must 
 	#Now the hash of the message
 	hash = hmac.new(key,data,hashlib.sha256).digest()
 	raw = data + hash
@@ -44,11 +49,72 @@ def encrypt(message):
 def decrypt(enc_message):
 	'''This function returns the decrypted version of the passed message'''
 	#Now Decryption of message
+	iv = enc_message[:AES.block_size]
 	cipher = AES.new(key,AES.MODE_CBC,iv)
-	dec_message = unpad(cipher.decrypt(enc_message[AES.block_size:])) #Decrypt the message by removing the IV which is of the size AES.block_size
+	dec_ret = unpad(cipher.decrypt(enc_message[AES.block_size:])) #Decrypt the message by removing the IV which is of the size AES.block_size
 																  #and then unpad it
+	dec_message = dec_ret[1]
+	pad_flag = dec_ret[0]
 	nhash = hmac.new(key,dec_message[:-32],hashlib.sha256).digest()
 	if nhash != dec_message[-32:]:
-		print("Verification Failed")
-		return False,""
-	return True,dec_message
+		#print("Verification Failed")
+		return False,pad_flag,dec_message
+	return True,pad_flag,dec_message
+def helper(precipher,curcipher,ignlist):
+	n = AES.block_size
+	nblock = []
+	for t in range(n-1,-1,-1):   #The bytes in opposite order
+		flag = False
+		for num in range(0,256,1):
+			if (not((t,num) in ignlist)):
+				precipher_copy = precipher.copy()
+				for ti in range(t+1,n,1):
+					precipher_copy[ti] = precipher_copy[ti]^(n-t-1)^(n-t)
+				precipher_copy[t] = precipher_copy[t]^num^(n-t)
+				precipher_copy.extend(curcipher)
+				nstr = bytes(precipher_copy)
+				if decrypt(nstr)[1]==True:
+					#print(num)
+					flag = True
+					precipher = precipher_copy[:AES.block_size]
+					nblock.append(num)
+					break;
+		if not flag:
+			ignlist.add((t+1,nblock[len(nblock)-1]))
+			return False,[]
+	return True,nblock
+
+def poodle():
+	raw_str = list(map(ord,"My name is Jhonny The joker."))
+	oblocks = list(zip(*[iter(raw_str)]*AES.block_size))
+	encr_str = encrypt(raw_str)
+	#Note This file does not use handshake (when doing that we have to probably use two files and not just one to show actual POODLE Demo)
+	b_plainlist = [] #plaintext in form of byte list
+	plainblocks = []
+	#Thw below list will contain all the blocks that we need
+	blocks = list(zip(*[iter(encr_str)]*AES.block_size))
+	for cibpos in range(0,len(blocks)-1):
+		precipher = list(blocks[cibpos]) #This is the block whose bytes we are going to change to get the next block
+		curcipher = list(blocks[cibpos+1]) #This is the block whose plaintext is we are obtaining
+		ignlist = set([])
+		helper_bool =  False
+		while not helper_bool:
+			helper_ret = helper(precipher,curcipher,ignlist)
+			helper_bool = helper_ret[0]
+			nblock = helper_ret[1]
+		nblock.reverse()
+		b_plainlist.extend(nblock)
+		plainblocks.append(tuple(nblock))
+	b_plaintext = bytes(b_plainlist)
+	return plainblocks[:-3]==oblocks,b_plaintext
+
+class poodleerror(RuntimeError):
+	def __init__(self,*arg):
+		self.args = arg
+
+poodle_ret = poodle()
+if poodle_ret[0]:
+	plain_hash_pad = poodle_ret[1]
+	print(unpad(plain_hash_pad)[1][:-32])
+else:
+	raise poodleerror()

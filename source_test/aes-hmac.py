@@ -29,7 +29,7 @@ def unpad(s):
 		which is used with AES ciphers'''
 	return  s[:-ord(s[len(s)-1:])]  #This implies remove the last padding character as many times as it's value from given string to get the
 									#unpadded string
-message = "Attack at the night"
+message = "Attack at the night in the woods"
 data = message.encode('UTF-8') #Encoding the message is must 
 #Now the hash of the message
 hash = hmac.new(key,data,hashlib.sha256).digest()

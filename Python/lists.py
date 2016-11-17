@@ -15,3 +15,8 @@ for x in range(len(pizza)):
 ###############################################
 for x in pizza:
 	print(x)
+###############################################
+nblock = []
+nblock = [3,4,5]
+nblock.reverse()
+print(nblock)
