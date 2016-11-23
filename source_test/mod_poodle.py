@@ -16,6 +16,12 @@ import hashlib
 key = Random.new().read(AES.block_size)
 iv = Random.new().read(AES.block_size)
 
+#Function to generate Random key and iv when required
+def generate():
+	global key
+	key = Random.new().read(AES.block_size)
+	global iv
+	iv = Random.new().read(AES.block_size)
 #Function to pad messages
 def pad(s):
 	'''This function returns the padded message for given parameter string s according to PKCS7 standard
@@ -37,6 +43,7 @@ def unpad(s):
 
 def encrypt(message):
 	'''This function returns the encrypted version of the passed message using AES-256 in CBC(Cipher Block Chaining Mode'''
+	generate()
 	data = bytes(message) #Encoding the message is must 
 	#Now the hash of the message
 	hash = hmac.new(key,data,hashlib.sha256).digest()
@@ -84,8 +91,19 @@ def helper(precipher,curcipher,ignlist):
 			return False,[]
 	return True,nblock
 
-def poodle():
-	raw_str = list(map(ord,"Attack the person"))
+def getbytestr(inp):
+	'''This function returns the byte array for the given input string inp'''
+	raw_str = list(map(ord,inp))
+	return bytes(raw_str)
+
+def poodle_test(inp):
+	'''
+		This function implements the test poodle attack on inp string which it itself encrypts using AES-CBC and returns
+		a tuple (Boolean,Decrypted bytestring<contains HMAC and Padding>)
+		Use unpad function to unpad the bytestring
+		NOTE - Input is string denoting plaintext
+	'''
+	raw_str = list(map(ord,inp))
 	oblocks = list(zip(*[iter(raw_str)]*AES.block_size))
 	encr_str = encrypt(raw_str)
 	#Note This file does not use handshake (when doing that we have to probably use two files and not just one to show actual POODLE Demo)
@@ -108,13 +126,34 @@ def poodle():
 	b_plaintext = bytes(b_plainlist)
 	return plainblocks[:-3]==oblocks,b_plaintext
 
+def poodle(inp):
+	'''
+		This function implements the actual poodle attack on inp bytestring which is already encrypted using AES-CBC and returns
+		a bytestring which is a decrypted String<contains HMAC and Padding>
+		Use unpad function to unpad the bytestring
+		NOTE - Input is bytestring denoting encrypted secret
+	'''
+	encr_str = inp
+	#Note This file does not use handshake (when doing that we have to probably use two files and not just one to show actual POODLE Demo)
+	b_plainlist = [] #plaintext in form of byte list
+	plainblocks = []
+	#Thw below list will contain all the blocks that we need
+	blocks = list(zip(*[iter(encr_str)]*AES.block_size))
+	for cibpos in range(0,len(blocks)-1):
+		precipher = list(blocks[cibpos]) #This is the block whose bytes we are going to change to get the next block
+		curcipher = list(blocks[cibpos+1]) #This is the block whose plaintext is we are obtaining
+		ignlist = set([])
+		helper_bool =  False
+		while not helper_bool:
+			helper_ret = helper(precipher,curcipher,ignlist)
+			helper_bool = helper_ret[0]
+			nblock = helper_ret[1]
+		nblock.reverse()
+		b_plainlist.extend(nblock)
+		plainblocks.append(tuple(nblock))
+	b_plaintext = bytes(b_plainlist)
+	return b_plaintext
+
 class poodleerror(RuntimeError):
 	def __init__(self,*arg):
 		self.args = arg
-
-poodle_ret = poodle()
-if poodle_ret[0]:
-	plain_hash_pad = poodle_ret[1]
-	print(unpad(plain_hash_pad)[1][:-32])
-else:
-	raise poodleerror()
